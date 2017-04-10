@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B631FDD01E9C08BE006E8039 /* GraphsAlgorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = B631FDCF1E9C08BE006E8039 /* GraphsAlgorithms.swift */; };
+		B631FDD11E9C08BE006E8039 /* GraphsAlgorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = B631FDCF1E9C08BE006E8039 /* GraphsAlgorithms.swift */; };
 		B6C777D61E9BEE37004B392E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C777D51E9BEE37004B392E /* AppDelegate.swift */; };
 		B6C777D81E9BEE37004B392E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C777D71E9BEE37004B392E /* ViewController.swift */; };
 		B6C777DB1E9BEE37004B392E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6C777D91E9BEE37004B392E /* Main.storyboard */; };
@@ -26,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B631FDCF1E9C08BE006E8039 /* GraphsAlgorithms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphsAlgorithms.swift; sourceTree = "<group>"; };
 		B6C777D21E9BEE37004B392E /* Dijkstra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dijkstra.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6C777D51E9BEE37004B392E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6C777D71E9BEE37004B392E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +86,7 @@
 				B6C777DC1E9BEE37004B392E /* Assets.xcassets */,
 				B6C777DE1E9BEE37004B392E /* LaunchScreen.storyboard */,
 				B6C777E11E9BEE37004B392E /* Info.plist */,
+				B631FDCF1E9C08BE006E8039 /* GraphsAlgorithms.swift */,
 			);
 			path = Dijkstra;
 			sourceTree = "<group>";
@@ -201,6 +205,7 @@
 			files = (
 				B6C777D81E9BEE37004B392E /* ViewController.swift in Sources */,
 				B6C777D61E9BEE37004B392E /* AppDelegate.swift in Sources */,
+				B631FDD01E9C08BE006E8039 /* GraphsAlgorithms.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,6 +213,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B631FDD11E9C08BE006E8039 /* GraphsAlgorithms.swift in Sources */,
 				B6C777EB1E9BEE37004B392E /* DijkstraTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,7 +289,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -328,7 +334,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -408,6 +414,7 @@
 				B6C777F11E9BEE37004B392E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B6C777F21E9BEE37004B392E /* Build configuration list for PBXNativeTarget "DijkstraTests" */ = {
 			isa = XCConfigurationList;
@@ -416,6 +423,7 @@
 				B6C777F41E9BEE37004B392E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
