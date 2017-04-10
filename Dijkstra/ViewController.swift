@@ -55,12 +55,12 @@ class ViewController: UIViewController {
             printPath(shortestPath)
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     
     
     func addEdge(source: Vertex, neighbour: Vertex, weight: Int) {
@@ -124,18 +124,18 @@ class ViewController: UIViewController {
         }
         
         
-        return finalPaths.filter({ path in path.destination.key != destination.key }).sorted(by: { (path1, path2) -> Bool in
+        return finalPaths.filter({ path in path.destination.key == destination.key }).sorted(by: { (path1, path2) -> Bool in
             return path1.total < path2.total
         }).first
     }
     
     func printPath(_ path: Path) {
-        var currentPath = path
-        while currentPath.previous != nil {
-            print(currentPath.destination.key)
-            currentPath = currentPath.previous
+        var currentPath: Path? = path
+        while currentPath != nil {
+            print(currentPath!.destination.key)
+            currentPath = currentPath!.previous
         }
     }
-
+    
 }
 
