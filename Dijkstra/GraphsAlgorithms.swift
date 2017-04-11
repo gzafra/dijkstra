@@ -53,16 +53,7 @@ class GraphsAlgorithms {
         var finalPaths = [Path]()
         
         // Create frontier using source's edges
-        for edge in source.neighbors {
-            let newPath = Path()
-            
-            newPath.destination = edge.neighbour
-            newPath.previous = nil
-            newPath.total = edge.weight
-            
-            pathsToEvaluate.append(newPath)
-        }
-        
+        pathsToEvaluate.append(contentsOf: pathsForEdges(source.neighbors))
         
         var bestPath = Path()
         
@@ -80,18 +71,9 @@ class GraphsAlgorithms {
                     bestPathIndex = idx
                 }
             }
-            
-            
+
             //enumerate the bestPath edges
-            for edge in bestPath.destination.neighbors {
-                let newPath = Path()
-                
-                newPath.destination = edge.neighbour
-                newPath.previous = bestPath
-                newPath.total = bestPath.total + edge.weight
-                
-                pathsToEvaluate.append(newPath)
-            }
+            pathsToEvaluate.append(contentsOf: pathsForEdges(bestPath.destination.neighbors, currentPath: bestPath))
             
             finalPaths.append(bestPath)
             
@@ -104,6 +86,20 @@ class GraphsAlgorithms {
         }).first
         printPath(shortestPath)
         return shortestPath
+    }
+    
+    static func pathsForEdges(_ edges: [Edge], currentPath: Path? = nil) -> [Path] {
+        var paths = [Path]()
+        for edge in edges {
+            let newPath = Path()
+            
+            newPath.destination = edge.neighbour
+            newPath.previous = currentPath
+            newPath.total = (currentPath?.total ?? 0) + edge.weight
+            
+            paths.append(newPath)
+        }
+        return paths
     }
     
     static func printPath(_ path: Path?) {
