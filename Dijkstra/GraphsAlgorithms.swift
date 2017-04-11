@@ -71,7 +71,7 @@ class GraphsAlgorithms {
                     bestPathIndex = idx
                 }
             }
-
+            
             //enumerate the bestPath edges
             pathsToEvaluate.append(contentsOf: pathsForEdges(bestPath.destination.neighbors, currentPath: bestPath))
             
@@ -86,6 +86,48 @@ class GraphsAlgorithms {
         }).first
         printPath(shortestPath)
         return shortestPath
+    }
+    
+    static func processDijkstra2(source: Vertex, destination: Vertex) -> Path? {
+        var pathsToEvaluate = [Path]()
+        var finalBestPath: Path? = nil
+        
+        // Create frontier using source's edges
+        pathsToEvaluate.append(contentsOf: pathsForEdges(source.neighbors))
+        
+        var bestPath = Path()
+        
+        while pathsToEvaluate.count != 0 {
+            
+            // Sort by total (shortest first)
+            pathsToEvaluate = pathsToEvaluate.sorted(by: { (path1, path2) -> Bool in
+                return path1.total < path2.total
+            })
+            
+            // Remove shortest path to evaluate
+            bestPath = pathsToEvaluate.removeFirst()
+            
+            // Get new paths filtering out those already contained with higher or equal total
+            let newPaths = pathsForEdges(bestPath.destination.neighbors, currentPath: bestPath).filter({ (path) -> Bool in
+                return !pathsToEvaluate.contains(where: {path.destination.key == $0.destination.key && path.total >= $0.total })
+            })
+            
+            // Filter out paths already in the list that are worst than we new ones
+            pathsToEvaluate = pathsToEvaluate.filter({ (path) -> Bool in
+                return !newPaths.contains(where: {path.destination.key == $0.destination.key && path.total > $0.total })
+            })
+            
+            // Add new paths to evaluate
+            pathsToEvaluate.append(contentsOf: newPaths)
+            
+            // If current bestPath leads to destination, add it as final
+            if destination.key == bestPath.destination.key && (finalBestPath == nil || bestPath.total < finalBestPath!.total) {
+                finalBestPath = bestPath
+            }
+        }
+
+        printPath(finalBestPath)
+        return finalBestPath
     }
     
     static func pathsForEdges(_ edges: [Edge], currentPath: Path? = nil) -> [Path] {
